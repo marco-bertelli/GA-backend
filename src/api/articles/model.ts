@@ -5,6 +5,21 @@ const ArticlesSchema = new Schema({
     name: {
         type: String
     },
+    sellerCode: {
+        type: String
+    },
+    articleCode: {
+        type: String
+    },
+    articleColorCode: {
+        type: String
+    },
+    articleMeasureCode: {
+        type: String
+    },
+    articleColloCode: {
+        type: String
+    },
     // use this field to handle multiple prices so an operator can insert multiple prices
     // and when selecting this item i have to choose only ONE of this price
     prices: {
