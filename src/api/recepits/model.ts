@@ -6,6 +6,9 @@ const RecepitsSchema = new Schema({
     code: {
         type: String,
     },
+    ddtCode: {
+        type: String,
+    },
     internalCode: {
         type: Number
     },
@@ -64,6 +67,7 @@ async function generateInvoiceCode(this: any, next: () => void) {
     this.internalCode = lastrecepit ? Number(lastrecepit.internalCode) + 1 : 1;
     this.year = currentYear;
     this.code = `Q${('00' + this.internalCode).slice(-3)}_${this.year}`;
+    this.ddtCode = `D${('00' + this.internalCode).slice(-3)}_${this.year}`;
 
     next();
 }
