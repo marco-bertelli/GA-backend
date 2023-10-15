@@ -9,6 +9,10 @@ const RecepitsSchema = new Schema({
     ddtCode: {
         type: String,
     },
+    ddtDeliveryDate: {
+        type: Date,
+        default: () => new Date()
+    },
     internalCode: {
         type: Number
     },
