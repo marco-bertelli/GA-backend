@@ -13,5 +13,7 @@ export interface RecepitDocument extends Document {
     notes: String
     createdAt: Date,
     pdfUrl: string,
+    deliveryFileUrl: string,
+    ddtCode: string,
     updateCosts: () => any;
 }

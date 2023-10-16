@@ -67,6 +67,18 @@ router.put('/:id', token({ required: true }), actions.update);
  **/
  router.post('/:id/pdf', token({ required: true }), actions.generatePdf);
 
+ /**
+ * @api {post} /recepits/:id/delivery/file generate delivery file from groups
+ * @apiGroup Recepit
+ * @apiName GenerateDeliveryFile
+ * @apiPermission Recepit
+ * @apiSuccess {Object} Recepit Recepit's data.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 401 Current Recepit or admin access only.
+ * @apiError 404 Recepit not found.
+ **/
+ router.post('/:id/delivery/file', token({ required: true }), actions.generateDeliveryFile);
+
 /**
  * @api {delete} /recepits/:id Delete Recepit
  * @apiName Delete

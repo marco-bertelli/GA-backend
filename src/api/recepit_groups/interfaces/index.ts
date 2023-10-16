@@ -1,4 +1,5 @@
 import { Document, Types } from 'mongoose';
+import { ArticleDocument } from '../../articles/interfaces';
 
 export interface RecepitGroupDocument extends Document {
     code: String,
@@ -11,5 +12,5 @@ export interface RecepitGroupDocument extends Document {
     notes: String
     unitPrice: Number,
     articleId: Types.ObjectId,
-    article: Object,
+    article: ArticleDocument,
 }

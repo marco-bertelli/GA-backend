@@ -22,6 +22,9 @@ const RecepitsSchema = new Schema({
     pdfUrl: {
         type: String
     },
+    deliveryFileUrl: {
+        type: String
+    },
     data: {
         type: Date
     },
