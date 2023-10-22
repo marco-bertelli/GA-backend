@@ -33,7 +33,7 @@ export const PdfCreatorApi = function (s3PdfBucketName: string, awsInstance: { S
             },
             json: true // Automatically stringifies the body to JSON
         };
-        let baseUrl = 'https://s3-eu-central-1.amazonaws.com/' + s3PdfBucketName + '/';
+        let baseUrl = 'https://s3-eu-west-1.amazonaws.com/' + s3PdfBucketName + '/';
         const filePath = baseUrl + fileNameComplete;
         return new Promise((resolve, reject) => {
             request(options)

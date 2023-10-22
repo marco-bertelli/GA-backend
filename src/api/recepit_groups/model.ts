@@ -37,6 +37,9 @@ const RecepitGroupsSchema = new Schema({
     article: {
         type: Object,
     },
+    pdfUrl: {
+        type: String
+    },
 });
 
 

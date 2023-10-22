@@ -13,4 +13,5 @@ export interface RecepitGroupDocument extends Document {
     unitPrice: Number,
     articleId: Types.ObjectId,
     article: ArticleDocument,
+    pdfUrl: string,
 }

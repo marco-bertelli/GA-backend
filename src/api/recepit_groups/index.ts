@@ -44,6 +44,18 @@ router.get('/:id', token({ required: true }), actions.show);
 router.post('/', token({ required: true }), actions.create);
 
 /**
+ * @api {post} /recepits_groups/:id/pdf Create Recepit
+ * @apiGroup RecepitGroups
+ * @apiName CreatePdf
+ * @apiPermission user
+ * @apiSuccess (Success 201) pdf
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 401 Admin access only.
+ * @apiError 409 Email already registered.
+ **/
+router.post('/:id/pdf', token({ required: true }), actions.generatePdf);
+
+/**
  * @api {put} /recepits/:id Update Recepit
  * @apiGroup Recepit
  * @apiName Update
