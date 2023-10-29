@@ -9,6 +9,9 @@ const RecepitGroupsSchema = new Schema({
     internalCode: {
         type: Number
     },
+    internalColloCode: {
+        type: Number
+    },
     recepitId: {
         type: Types.ObjectId
     },
@@ -64,7 +67,6 @@ async function updateRecepitPrice(doc: any, next: () => any) {
 }
 
 RecepitGroupsSchema.pre('save', async function generateGroupCode(next) {
-
     if (!this.isNew) {
         return next();
     }
@@ -73,6 +75,20 @@ RecepitGroupsSchema.pre('save', async function generateGroupCode(next) {
 
     this.internalCode = lastRecepit ? Number(lastRecepit.internalCode) + 1 : 1;
     this.code = `${('00000' + this.internalCode).slice(-6)}`;
+
+    next();
+});
+
+RecepitGroupsSchema.pre('save', async function generateColloCode(next) {
+    if (!this.isNew) {
+        return next();
+    }
+
+    const lastRecepit = await RecepitGroup.findOne({ recepitId: this.recepitId }).sort({ internalColloCode: -1 });
+    const currentYear = new Date().toLocaleDateString('en', { year: '2-digit' });
+
+    this.internalCode = lastRecepit ? Number(lastRecepit.internalColloCode) + 1 : 1;
+    this.article.articleColloCode = `P64${currentYear}${('00000' + this.internalColloCode).slice(-6)}`;
 
     next();
 });
