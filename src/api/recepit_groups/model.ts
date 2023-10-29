@@ -87,7 +87,7 @@ RecepitGroupsSchema.pre('save', async function generateColloCode(next) {
     const lastRecepit = await RecepitGroup.findOne({ recepitId: this.recepitId }).sort({ internalColloCode: -1 });
     const currentYear = new Date().toLocaleDateString('en', { year: '2-digit' });
 
-    this.internalCode = lastRecepit ? Number(lastRecepit.internalColloCode) + 1 : 1;
+    this.internalColloCode = lastRecepit ? Number(lastRecepit.internalColloCode) + 1 : 1;
     this.article.articleColloCode = `P64${currentYear}${('00000' + this.internalColloCode).slice(-6)}`;
 
     next();
